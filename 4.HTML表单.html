@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#"><!--action用于指定表单数据提交的目标URL-->
+        <span>用户名：</span>
+        <input type="text"  placeholder="请输入用户名">
+        <br><br>
+        <label for="password">密码:</label>
+        <input type="password" id="password" value="请输入密码">
+        <br><br
+
+        <label>性别：</label>
+        <input type="radio"name="gender">man<!--单选按钮-->
+        <input type="radio"name="gender">woman<!--有了name="gender"则表示只能从中选择一个-->
+        <br><br
+
+        <label>爱好：</label>
+        <input type="checkbox" name="hobby">篮球<!--复选按钮-->
+        <input type="checkbox" name="hobby">足球
+        <input type="checkbox" name="hobby">乒乓球
+        <br><br>
+
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

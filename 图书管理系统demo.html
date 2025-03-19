@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书管理系统</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        .book-list {
+            margin-top: 20px;
+        }
+        .book-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .book-list th, .book-list td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .book-list th {
+            background-color: #f8f9fa;
+        }
+        .book-list tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .book-list tr:hover {
+            background-color: #f1f1f1;
+        }
+        .delete-btn {
+            color: #dc3545;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>图书管理系统</h1>
+        <div class="form-group">
+            <label for="bookTitle">书名</label>
+            <input type="text" id="bookTitle" placeholder="请输入书名">
+        </div>
+        <div class="form-group">
+            <label for="bookAuthor">作者</label>
+            <input type="text" id="bookAuthor" placeholder="请输入作者">
+        </div>
+        <div class="form-group">
+            <label for="bookISBN">ISBN</label>
+            <input type="text" id="bookISBN" placeholder="请输入ISBN">
+        </div>
+        <button class="btn" onclick="addBook()">添加图书</button>
+
+        <div class="book-list">
+            <h2>图书列表</h2>
+            <table id="bookTable">
+                <thead>
+                    <tr>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>ISBN</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 图书信息将动态添加到这里 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function addBook() {
+            const title = document.getElementById('bookTitle').value;
+            const author = document.getElementById('bookAuthor').value;
+            const isbn = document.getElementById('bookISBN').value;
+
+            if (title && author && isbn) {
+                const table = document.getElementById('bookTable').getElementsByTagName('tbody')[0];
+                const newRow = table.insertRow();
+
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                const cell3 = newRow.insertCell(2);
+                const cell4 = newRow.insertCell(3);
+
+                cell1.innerHTML = title;
+                cell2.innerHTML = author;
+                cell3.innerHTML = isbn;
+                cell4.innerHTML = '<span class="delete-btn" onclick="deleteBook(this)">删除</span>';
+
+                // 清空输入框
+                document.getElementById('bookTitle').value = '';
+                document.getElementById('bookAuthor').value = '';
+                document.getElementById('bookISBN').value = '';
+            } else {
+                alert('请填写所有字段');
+            }
+        }
+
+        function deleteBook(button) {
+            const row = button.parentElement.parentElement;
+            row.remove();
+        }
+    </script>
+</body>
+</html>

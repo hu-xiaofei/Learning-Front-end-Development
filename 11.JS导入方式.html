@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS导入方式</title>
+    <script>
+        console.log('Hello World! head标签内联样式');
+    </script>
+    <script src="./js/myScript.js"></script>
+</head>
+<body>
+    <h1>JS导入方式</h1>
+    <script>
+        // 1. 内部引入
+        // 内部引入的js代码会在html代码解析到script标签时立即执行
+        console.log('Hello World! body标签内联样式');
+
+        // 2. 外部引入
+        // 外部引入的js代码会在html代码解析到script标签时立即执行
+    
+        alert('Hello World! 外部引入');
+    </script>
+</body>
+</html>

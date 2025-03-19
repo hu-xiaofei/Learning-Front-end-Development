@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM</title>
+</head>
+<body>
+    <div id="box1">ID选择器标签</div>
+    <div class="box2">类选择器标签</div>
+    <div>普通div标签</div>
+
+    <button>按钮</button>
+
+    <script>
+        var element_id=document.getElementById('box1');
+        console.log(element_id);
+
+        var element_class=document.getElementsByClassName('box2')[0];
+        console.log(element_class);
+
+        var element_tag=document.getElementsByTagName('div')[2];
+        console.log(element_tag);
+
+        element_id.innerHTML='ID选择器标签已被修改';//innerHTML不是函数，是一个属性
+        element_class.innerText='类选择器标签已被修改';
+
+        element_tag.style.color='red';
+        element_tag.style.fontSize='20px';
+
+        //DOM属性绑定事件
+        var button_element=document.getElementsByTagName('button')[0];
+        // button_element.onclick=function(){
+        //     alert('按钮被点击');
+        // }
+        //第二种方法
+        button_element.addEventListener('click',function(){
+            alert('按钮被点击');
+        })
+    </script>
+</body>
+</html>
