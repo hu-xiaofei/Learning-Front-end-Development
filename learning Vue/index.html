@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue学习示例</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 插值表达式 -->
+        <h1>原始内容{{title}}</h1>
+        <p>{{content}}</p>
+        <p>{{1+2+3}}</p>
+        <p>{{output()}}</p>
+        <p>{{output()}}</p>
+        <p>{{output()}}</p>
+        <p>{{outoutContent}}</p> 
+        <!-- 计算属性,没有括号 -->
+        <p>{{outoutContent}}</p> 
+        <p>{{outoutContent}}</p> 
+
+        <!-- 指令 -->
+        <p v-text="htmlContent"></p>
+        <p v-html="htmlContent"></p>
+
+        <p v-for="item in 5">这是内容</p>
+
+    </div>
+    <script src="./vue.min.js"></script>
+    <script>
+        const vm = new Vue({
+            // 响应式数据与插值表达式
+            el: '#app',
+
+            data() {
+                return {
+                    title: '这是一个标题',
+                    content: '这是一个内容',
+                    htmlContent:'这是一个span标签'
+                }
+            },
+
+            //methods 属性
+            methods: {
+                output() {
+                    return '标题为' + this.title + '内容为' + this.content
+                    //this 在 output 方法中指向当前的 Vue 实例（vm）
+                }
+            },//methods用于封装代码
+
+            // 计算属性：具有缓存性
+            computed:{
+                outputContent(){
+                    return '标题为' + this.title + '内容为' + this.content
+                }
+            },
+
+            //侦听器：监听数据的变化,是一个参与响应的方法
+            watch:{
+                title(newVal,oldVal){
+                    console.log('title发生了变化')
+                }
+            }
+        }
+        )
+    </script>
+
+</body>
+
+</html>
